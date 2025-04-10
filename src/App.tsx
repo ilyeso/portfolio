@@ -215,12 +215,12 @@ function App() {
                   
                   {/* Timeline dot with company logo */}
                   <div className="absolute left-0 w-16 h-16 rounded-full bg-white border-4 border-primary-200 group-hover:border-primary-400 transition-colors flex items-center justify-center shadow-lg z-10">
-                    <img
-                      src="/static/adp.png"
-                      alt="ADP"
-                      className="w-full h-full rounded-full object-cover"
-                    />
-                  </div>
+                      <img
+                        src="/static/adp.png"
+                        alt="ADP"
+                        className="w-3/4 h-3/4 object-contain"
+                      />
+                    </div>
                   
                   {/* Experience card - fixed width */}
                   <div className="ml-24 w-[calc(100%-6rem)] min-w-[300px] max-w-[800px] bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 group-hover:shadow-xl group-hover:border-primary-200 transition-all duration-300">
@@ -291,13 +291,13 @@ function App() {
                 
                   
                   {/* Timeline dot with company logo */}
-                  <div className="absolute left-0 w-16 h-16 rounded-full bg-white border-4 border-primary-200 group-hover:border-primary-400 transition-colors flex items-center justify-center shadow-lg z-10 overflow-hidden">
-                    <img
-                      src="/static/elmam.svg"
-                      alt="ELmam"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+                  <div className="absolute left-0 w-16 h-16 rounded-full bg-white border-4 border-primary-200 group-hover:border-primary-400 transition-colors flex items-center justify-center shadow-lg z-10">
+                      <img
+                        src="/static/elmam.svg"
+                        alt="ADP"
+                        className="w-3/4 h-3/4 object-contain"
+                      />
+                    </div>
                   
                   {/* Experience card - fixed width */}
                   <div className="ml-24 w-[calc(100%-6rem)] min-w-[300px] max-w-[800px] bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 group-hover:shadow-xl group-hover:border-primary-200 transition-all duration-300">
@@ -600,99 +600,336 @@ function App() {
       </section>
 
 
-        {/* Contact Section */}
-          {/* Contact Section */}
-<section id="contact" className="relative py-20 overflow-hidden bg-gradient-to-br from-primary-50 to-secondary-50">
-  <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-    <h2 className="text-4xl font-bold text-primary-900 mb-12 text-center">
+          {/* Projects Section */}
+<section id="projects" className="relative py-20 overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800">
+  {/* Floating tech icons background */}
+  <div className="absolute inset-0 overflow-hidden opacity-10">
+    {['aws', 'python', 'django', 'tensorflow', 'flask', 'mysql', 'github'].map((tech, i) => (
+      <div 
+        key={i}
+        className="absolute text-white text-4xl"
+        style={{
+          top: `${Math.random() * 100}%`,
+          left: `${Math.random() * 100}%`,
+          animation: `float ${Math.random() * 10 + 10}s infinite ${Math.random() * 5}s linear`,
+        }}
+      >
+        {tech === 'aws' && <i className="fab fa-aws"></i>}
+        {tech === 'python' && <i className="fab fa-python"></i>}
+        {tech === 'django' && <i className="fab fa-dev"></i>}
+        {tech === 'tensorflow' && <i className="fas fa-brain"></i>}
+        {tech === 'flask' && <i className="fas fa-flask"></i>}
+        {tech === 'mysql' && <i className="fas fa-database"></i>}
+        {tech === 'github' && <i className="fab fa-github"></i>}
+      </div>
+    ))}
+  </div>
+
+  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+    <h2 className="text-4xl font-bold text-white mb-4 text-center">
       <span className="relative inline-block">
-        Let's Connect
-        <span className="absolute bottom-0 left-0 w-full h-2 bg-primary-200/50 -rotate-1 z-0"></span>
+        Featured Projects
+        <span className="absolute bottom-0 left-0 w-full h-2 bg-primary-400/50 -rotate-1 z-0"></span>
       </span>
     </h2>
+    <p className="text-xl text-gray-300 mb-12 text-center max-w-3xl mx-auto">
+      Innovative solutions combining data science and software engineering expertise
+    </p>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-      {/* Email Card */}
+    {/* Interactive Project Cards */}
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      
+      {/* AWS Stock Prediction Project */}
       <div 
-        className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 group text-center cursor-pointer"
-        onClick={(e) => {
-          const email = e.currentTarget.querySelector('.email-text');
-          const clickText = e.currentTarget.querySelector('.click-text');
-          if (email && clickText) {
-            email.classList.toggle('hidden');
-            clickText.classList.toggle('hidden');
-          }
-        }}
-      >
-        <div className="w-14 h-14 rounded-xl bg-primary-100 flex items-center justify-center mb-4 mx-auto group-hover:bg-primary-200 transition-colors">
-          <Mail className="h-8 w-8 text-primary-600 group-hover:text-primary-700 transition-colors" />
+      className="group perspective-1000 h-[410px] cursor-pointer"
+      onClick={(e) => {
+        const card = e.currentTarget.querySelector('.project-card');
+        if (card) {
+          card.classList.toggle('rotate-y-180');
+        }
+      }}
+    >
+
+    
+      {/* <div className="group perspective-1000 h-[400px]"> */}
+      <div className="relative preserve-3d w-full h-full duration-500 project-card">
+          {/* Front Side */}
+          <div className="absolute backface-hidden w-full h-full bg-gradient-to-br from-primary-900 to-primary-700 rounded-xl shadow-2xl p-8 flex flex-col">            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center space-x-3">
+                <div className="p-3 bg-white/10 rounded-lg">
+                  <i className="fab fa-aws text-3xl text-white"></i>
+                </div>
+                <h3 className="text-xl font-bold text-white">Stock Price Prediction</h3>
+              </div>
+              <span className="px-3 py-1 bg-white/10 text-white rounded-full text-sm">AWS</span>
+            </div>
+            <p className="text-gray-300 mb-6 flex-grow">
+              Automated data pipeline with machine learning for stock market predictions
+            </p>
+            <div className="flex flex-wrap gap-2 mb-6">
+              {['EC2', 'Lambda', 'S3', 'EventBridge', 'Flask', 'CI/CD'].map((tech, i) => (
+                <span key={i} className="px-3 py-1 bg-white/10 text-white rounded-full text-xs">
+                  {tech}
+                </span>
+              ))}
+            </div>
+            <div className="mt-auto text-center">
+            <span className="text-orange-500 text-sm">More details   &gt;&gt;</span>
+            </div>
+          </div>
+          
+          {/* Back Side */}
+          <div className="absolute backface-hidden rotate-y-180 w-full h-full bg-gray-800 rounded-xl shadow-2xl p-8 overflow-y-auto">
+            <h3 className="text-xl font-bold text-white mb-4">AWS Stock Prediction System</h3>
+            <ul className="space-y-3 text-gray-300 text-sm list-disc pl-5">
+              <li>Developed Flask application for stock price prediction using AWS services</li>
+              <li>Hosted on EC2 with Lambda functions triggered by EventBridge schedules</li>
+              <li>Automated daily data fetching from Alpha Vantage API</li>
+              <li>Utilized S3 for secure storage of data and trained models</li>
+              <li>Implemented periodic model retraining using EC2 cron jobs</li>
+              <li>Leveraged GitHub Actions for CI/CD automation</li>
+            </ul>
+            <div className="mt-6 pt-4 border-t border-gray-700">
+              <h4 className="text-sm font-semibold text-gray-400 mb-2">Impact</h4>
+              <p className="text-gray-300 text-sm">
+                Created a fully automated prediction system reducing manual work by 80% while maintaining 92% prediction accuracy.
+              </p>
+            </div>
+          </div>
         </div>
-        <h3 className="text-lg font-semibold text-gray-800 mb-2">Email</h3>
-        <div className="click-text text-gray-500 text-sm">Click to show</div>
-        <a 
-          href="mailto:elyesomri2@gmail.com" 
-          className="email-text hidden text-primary-600 hover:text-primary-700 transition-colors text-sm font-medium"
-        >
-          elyesomri2@gmail.com
-        </a>
+      </div>
+     
+      {/* HR Management System */}
+      <div 
+      className="group perspective-1000 h-[410px] cursor-pointer"
+      onClick={(e) => {
+        const card = e.currentTarget.querySelector('.project-card');
+        if (card) {
+          card.classList.toggle('rotate-y-180');
+        }
+      }}
+    >
+      <div className="relative preserve-3d w-full h-full duration-500 project-card">
+          {/* Front Side */}
+          <div className="absolute backface-hidden w-full h-full bg-gradient-to-br from-blue-900 to-blue-700 rounded-xl shadow-2xl p-8 flex flex-col">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center space-x-3">
+                <div className="p-3 bg-white/10 rounded-lg">
+                  <i className="fab fa-python text-3xl text-white"></i>
+                </div>
+                <h3 className="text-xl font-bold text-white">HR Management System</h3>
+              </div>
+              <span className="px-3 py-1 bg-white/10 text-white rounded-full text-sm">Django</span>
+            </div>
+            <p className="text-gray-300 mb-6 flex-grow">
+              Comprehensive HR platform with role-based access and real-time notifications
+            </p>
+            <div className="flex flex-wrap gap-2 mb-6">
+              {['Django', 'MySQL', 'SSE', 'Dashboards', 'Full-Stack'].map((tech, i) => (
+                <span key={i} className="px-3 py-1 bg-white/10 text-white rounded-full text-xs">
+                  {tech}
+                </span>
+              ))}
+            </div>
+            <div className="mt-auto text-center">
+              <span className="text-orange-500 text-sm">More details   &gt;&gt;</span>
+            </div>
+          </div>
+          
+          {/* Back Side */}
+          <div className="absolute backface-hidden rotate-y-180 w-full h-full bg-gray-800 rounded-xl shadow-2xl p-8 overflow-y-auto">
+            <h3 className="text-xl font-bold text-white mb-4">HR Management System</h3>
+            <ul className="space-y-3 text-gray-300 text-sm list-disc pl-5">
+              <li>Custom Django-based HR platform with role-based access control</li>
+              <li>Real-time request notifications using Server-Sent Events (SSE)</li>
+              <li>Data-driven dashboards for HR analytics</li>
+              <li>Comprehensive operations for employees, vacations, and documents</li>
+              <li>Automated tracking of expiring contracts and documents</li>
+            </ul>
+            <div className="mt-6 pt-4 border-t border-gray-700">
+              <h4 className="text-sm font-semibold text-gray-400 mb-2">Impact</h4>
+              <ul className="space-y-2 text-gray-300 text-sm list-disc pl-5">
+                <li>Saved HR agents 50% of time spent on manual tracking</li>
+                <li>Enhanced employee experience with streamlined request process</li>
+                <li>Reduced risk of missed deadlines by centralizing important dates</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* LinkedIn Card */}
-      <a 
-        href="https://www.linkedin.com/in/ilyes-omri/" 
-        target="_blank" 
-        rel="noopener noreferrer"
-        className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 group text-center"
-      >
-        <div className="w-14 h-14 rounded-xl bg-blue-100 flex items-center justify-center mb-4 mx-auto group-hover:bg-blue-200 transition-colors">
-          <Linkedin className="h-8 w-8 text-blue-600 group-hover:text-blue-700 transition-colors" />
-        </div>
-        <h3 className="text-lg font-semibold text-gray-800 mb-2">LinkedIn</h3>
-        <div className="text-blue-600 text-sm font-medium">
-          Elyes Omri
-        </div>
-      </a>
-
-      {/* GitHub Card */}
-      <a 
-        href="https://github.com/ilyeso" 
-        target="_blank" 
-        rel="noopener noreferrer"
-        className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 group text-center"
-      >
-        <div className="w-14 h-14 rounded-xl bg-gray-100 flex items-center justify-center mb-4 mx-auto group-hover:bg-gray-200 transition-colors">
-          <Github className="h-8 w-8 text-gray-600 group-hover:text-gray-700 transition-colors" />
-        </div>
-        <h3 className="text-lg font-semibold text-gray-800 mb-2">GitHub</h3>
-        <div className="text-gray-600 text-sm font-medium">
-          ilyeso
-        </div>
-      </a>
-
-      {/* Phone Card */}
+      {/* Bank Client Classifier */}
       <div 
-        className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 group text-center cursor-pointer"
-        onClick={(e) => {
-          const phone = e.currentTarget.querySelector('.phone-text');
-          const clickText = e.currentTarget.querySelector('.click-text');
-          if (phone && clickText) {
-            phone.classList.toggle('hidden');
-            clickText.classList.toggle('hidden');
-          }
-        }}
-      >
-        <div className="w-14 h-14 rounded-xl bg-green-100 flex items-center justify-center mb-4 mx-auto group-hover:bg-green-200 transition-colors">
-          <Phone className="h-8 w-8 text-green-600 group-hover:text-green-700 transition-colors" />
+      className="group perspective-1000 h-[410px] cursor-pointer"
+      onClick={(e) => {
+        const card = e.currentTarget.querySelector('.project-card');
+        if (card) {
+          card.classList.toggle('rotate-y-180');
+        }
+      }}
+    >
+      <div className="relative preserve-3d w-full h-full duration-500 project-card">
+          {/* Front Side */}
+          <div className="absolute backface-hidden w-full h-full bg-gradient-to-br from-purple-900 to-purple-700 rounded-xl shadow-2xl p-8 flex flex-col">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center space-x-3">
+                <div className="p-3 bg-white/10 rounded-lg">
+                  <i className="fas fa-brain text-3xl text-white"></i>
+                </div>
+                <h3 className="text-xl font-bold text-white">Bank Client Classifier</h3>
+              </div>
+              <span className="px-3 py-1 bg-white/10 text-white rounded-full text-sm">ML</span>
+            </div>
+            <p className="text-gray-300 mb-6 flex-grow">
+              Machine learning system achieving 95% accuracy in client classification
+            </p>
+            <div className="flex flex-wrap gap-2 mb-6">
+              {['ANN', 'KNN', 'Logistic', 'AdaBoost', 'Feature Eng'].map((tech, i) => (
+                <span key={i} className="px-3 py-1 bg-white/10 text-white rounded-full text-xs">
+                  {tech}
+                </span>
+              ))}
+            </div>
+            <div className="mt-auto text-center">
+              <span className="text-orange-500 text-sm">More details  &gt;&gt; </span>
+            </div>
+          </div>
+          
+          {/* Back Side */}
+          <div className="absolute backface-hidden rotate-y-180 w-full h-full bg-gray-800 rounded-xl shadow-2xl p-8 overflow-y-auto">
+            <h3 className="text-xl font-bold text-white mb-4">Bank Client Classifier</h3>
+            <ul className="space-y-3 text-gray-300 text-sm list-disc pl-5">
+              <li>Performed data cleaning, structuring, and transformation</li>
+              <li>Benchmarked KNN, Logistic Regression, Discriminant Analysis, Naive Bayes, ANN, and Classification Trees</li>
+              <li>Implemented feature engineering to optimize model performance</li>
+              <li>Achieved 95% predictive accuracy with Artificial Neural Network</li>
+              <li>Developed comprehensive model evaluation metrics</li>
+            </ul>
+            <div className="mt-6 pt-4 border-t border-gray-700">
+              <h4 className="text-sm font-semibold text-gray-400 mb-2">Technical Highlights</h4>
+              <p className="text-gray-300 text-sm">
+                The system outperformed traditional banking scoring methods by 12% while reducing false positives by 18%.
+              </p>
+            </div>
+          </div>
         </div>
-        <h3 className="text-lg font-semibold text-gray-800 mb-2">Phone</h3>
-        <div className="click-text text-gray-500 text-sm">Click to show</div>
-        <div className="phone-text hidden text-green-600 text-sm font-medium">
-          +216 55 249 653
+      </div>
+
+      {/* Call to Action */}
+      <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-2xl p-8 flex flex-col items-center justify-center border-2 border-gray-700/50 hover:border-primary-500 transition-colors">
+        <div className="text-center">
+          <h3 className="text-2xl font-bold text-white mb-3">More Projects Available</h3>
+          <p className="text-gray-300 mb-6 max-w-md">
+            Explore my GitHub repository for additional projects showcasing my full range of data science and software development skills.
+          </p>
+          <a 
+            href="https://github.com/ilyeso" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-6 py-3 bg-primary-600 hover:bg-primary-700 rounded-lg text-white font-medium transition-colors"
+          >
+            <i className="fab fa-github mr-2"></i>
+            View GitHub Portfolio
+          </a>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+        {/* Contact Section */}
+          {/* Contact Section */}
+          <section id="contact" className="relative py-20 overflow-hidden bg-gradient-to-br from-primary-50 to-secondary-50">
+            <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+              <h2 className="text-4xl font-bold text-primary-900 mb-12 text-center">
+                <span className="relative inline-block">
+                  Let's Connect
+                  <span className="absolute bottom-0 left-0 w-full h-2 bg-primary-200/50 -rotate-1 z-0"></span>
+                </span>
+              </h2>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {/* Email Card */}
+                <div 
+                  className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 group text-center cursor-pointer"
+                  onClick={(e) => {
+                    const email = e.currentTarget.querySelector('.email-text');
+                    const clickText = e.currentTarget.querySelector('.click-text');
+                    if (email && clickText) {
+                      email.classList.toggle('hidden');
+                      clickText.classList.toggle('hidden');
+                    }
+                  }}
+                >
+                  <div className="w-14 h-14 rounded-xl bg-primary-100 flex items-center justify-center mb-4 mx-auto group-hover:bg-primary-200 transition-colors">
+                    <Mail className="h-8 w-8 text-primary-600 group-hover:text-primary-700 transition-colors" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2">Email</h3>
+                  <div className="click-text text-gray-500 text-sm">Click to show</div>
+                  <a 
+                    href="mailto:elyesomri2@gmail.com" 
+                    className="email-text hidden text-primary-600 hover:text-primary-700 transition-colors text-sm font-medium"
+                  >
+                    elyesomri2@gmail.com
+                  </a>
+                </div>
+
+                {/* LinkedIn Card */}
+                <a 
+                  href="https://www.linkedin.com/in/ilyes-omri/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 group text-center"
+                >
+                  <div className="w-14 h-14 rounded-xl bg-blue-100 flex items-center justify-center mb-4 mx-auto group-hover:bg-blue-200 transition-colors">
+                    <Linkedin className="h-8 w-8 text-blue-600 group-hover:text-blue-700 transition-colors" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2">LinkedIn</h3>
+                  <div className="text-blue-600 text-sm font-medium">
+                    Elyes Omri
+                  </div>
+                </a>
+
+                {/* GitHub Card */}
+                <a 
+                  href="https://github.com/ilyeso" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 group text-center"
+                >
+                  <div className="w-14 h-14 rounded-xl bg-gray-100 flex items-center justify-center mb-4 mx-auto group-hover:bg-gray-200 transition-colors">
+                    <Github className="h-8 w-8 text-gray-600 group-hover:text-gray-700 transition-colors" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2">GitHub</h3>
+                  <div className="text-gray-600 text-sm font-medium">
+                    ilyeso
+                  </div>
+                </a>
+
+                {/* Phone Card */}
+                <div 
+                  className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 group text-center cursor-pointer"
+                  onClick={(e) => {
+                    const phone = e.currentTarget.querySelector('.phone-text');
+                    const clickText = e.currentTarget.querySelector('.click-text');
+                    if (phone && clickText) {
+                      phone.classList.toggle('hidden');
+                      clickText.classList.toggle('hidden');
+                    }
+                  }}
+                >
+                  <div className="w-14 h-14 rounded-xl bg-green-100 flex items-center justify-center mb-4 mx-auto group-hover:bg-green-200 transition-colors">
+                    <Phone className="h-8 w-8 text-green-600 group-hover:text-green-700 transition-colors" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2">Phone</h3>
+                  <div className="click-text text-gray-500 text-sm">Click to show</div>
+                  <div className="phone-text hidden text-green-600 text-sm font-medium">
+                    +216 55 249 653
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
       </main>
 
       {/* Footer */}
